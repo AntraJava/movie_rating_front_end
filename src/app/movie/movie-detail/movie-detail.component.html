@@ -1,0 +1,76 @@
+
+<div class="row">
+  <div class="col-md-6">
+<label mat-dialog-title>{{data.movie['title'] + '('+ data.movie['year']+')'}}</label>
+  </div>
+  <div class="col-md-6">
+    <button  mat-dialog-close class="btn btn-sm btn-round btn-danger pull-right">Close</button>
+  </div>
+</div>
+<mat-dialog-content>
+<div class="row movie_detail">
+        <div class="col-sm-3"><img src="{{data.movie['poster']}}" class="img-responsive"/></div>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2>Director: </h2>
+              <p>{{data.movie['director']}}</p>
+            </div>
+            <div class="col-sm-6">
+              <h2>Released: </h2>
+              <p>{{data.movie['release']}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <h2>Genre: </h2>
+              <p>{{data.movie['genre']}}</p>
+            </div>
+            <div class="col-sm-6">
+              <h2>Runtime: </h2>
+              <p>{{data.movie['runtime']}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <h2>Description: </h2>
+              <p>{{data.movie['plot']}}</p>
+            </div>
+          </div>
+        </div>
+</div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+  <div class="table">
+      <form #form="ngForm">
+          <div class="row movie_detail">
+            <div *ngFor="let charact of movieCharacts" class="col-md-3">
+              <div class="col-md-12 charact">
+                <Strong>{{ charact.name }}</Strong> {{ rate.rateStars[charact.id] ? rate.rateStars[charact.id] + ' Stars' : '' }}
+              </div>
+              <div class="col-md-12">
+                <bar-rating name="rating_{{charact.id}}" [(ngModel)]="rate.rateStars[charact.id]" [max]="5" required></bar-rating>
+              </div>
+            </div>
+        </div>
+      </form>
+
+      <div class="row movie_detail">
+<!--        <div class="col-md-6">-->
+<!--          <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>-->
+<!--        </div>-->
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-9">
+              <input type="text" class="form-control inverted review_field" [(ngModel)]="rate.comment" placeholder="Comments"/>
+            </div>
+            <div class="col-md-3">
+                <button  [mat-dialog-close]="true" class="btn btn-rounded btn-info review_field" (click)="submit()" [disabled]="form.invalid">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</mat-dialog-actions>

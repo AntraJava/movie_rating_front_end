@@ -1,0 +1,25 @@
+.movie_detail p{
+  color:Black;
+}
+
+.movie_detail h2{
+  color:Black;
+  margin-bottom:1px
+}
+
+.movie_detail .row{
+  margin-bottom:30px;
+}
+.dark{
+  background: radial-gradient(ellipse at bottom,#292d61 30%,#171941 80%);
+}
+.inverted {
+  filter: invert(100%);
+}
+.review_field{
+  margin-top: 30px;
+}
+.charact{
+  margin-top:30px;
+  margin-bottom:10px;
+}

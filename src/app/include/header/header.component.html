@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-default" color-on-scroll="20">
+  <div class="container">
+    <div class="navbar-translate">
+      <a class="navbar-brand" href="javascript:void(0)" rel="tooltip" title="" data-placement="bottom" target="_blank" data-original-title="Antra Movie Rating">
+        <span>ANTRA•</span> Movie Rating System
+      </a>
+    </div>
+    <div class="collapse navbar-collapse justify-content-end" id="navigation" *ngIf="getUsername()">
+      <ul class="navbar-nav">
+        <li class="dropdown nav-item">
+          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            <i class="fa fa-cogs d-lg-none d-xl-none"></i> <Strong>{{getUsername() | uppercase}}</Strong>  {{'-' + getUserEmail()}}
+          </a>
+          <div class="dropdown-menu dropdown-with-icons">
+            <a href="javascript:void(0)" (click)="logout()" class="dropdown-item">
+              <i class="tim-icons icon-paper"></i> Logout
+            </a>
+            <a href="" class="dropdown-item">
+              <i class="tim-icons icon-bullet-list-67"></i>Register Page
+            </a>
+            <a href="" class="dropdown-item">
+              <i class="tim-icons icon-image-02"></i>Landing Page
+            </a>
+            <a href="" class="dropdown-item">
+              <i class="tim-icons icon-single-02"></i>Profile Page
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

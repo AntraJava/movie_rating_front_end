@@ -1,0 +1,105 @@
+<div class="page-header header-filter">
+  <div class="squares square1"></div>
+  <div class="squares square2"></div>
+  <div class="squares square3"></div>
+  <div class="squares square4"></div>
+  <div class="squares square5"></div>
+  <div class="squares square6"></div>
+  <div class="squares square7"></div>
+
+    <div class="container">
+          <div class="content-center brand">
+
+
+            <div class="row margin-bottom-large">
+              <div class="col-md-10" style="vertical-align: middle">
+                <input [autofocus]="true" id="search" type="text" [(ngModel)]="searchKey" class="form-control"
+                       placeholder="Title of the Movie" (keyup.enter)="search()" [disabled]="loading"/>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-primary btn-md" (click)="search()" [disabled]="loading"><i
+                  class="tim-icons icon-zoom-split"></i></button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="btn-group-lg col-md-4">
+                <button class="btn btn-info btn-sm btn-round" (click)="popular()" [disabled]="loading">
+                  Popular
+                </button>
+              </div>
+              <div class="btn-group-lg col-md-4">
+                <button class="btn btn-success btn-sm btn-round" (click)="action()" [disabled]="loading">
+                  Action
+                </button>
+              </div>
+              <div class="btn-group-lg col-md-4">
+                <button class="btn btn-warning btn-sm btn-round" (click)="cartoon()" [disabled]="loading">
+                  Cartoon
+                </button>
+              </div>
+            </div>
+
+          </div>
+    </div>
+</div>
+<mat-spinner *ngIf="loading"></mat-spinner>
+
+<div class="main" id="result">
+  <div class="section">
+    <div class="container" >
+      <div class="row">
+        <div class="col-md-3" *ngFor="let data of movies">
+          <div class="card card-coin card-plain">
+
+            <div class="card-body">
+              <ul class="nav nav-tabs nav-tabs-primary justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link active show" data-toggle="tab" href="#link_{{data['imdbId']}}_1">
+                    Poster
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " data-toggle="tab" href="#link_{{data['imdbId']}}_2">
+                    Title
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content tab-subcategories">
+                <div class="tab-pane active show" id="link_{{data['imdbId']}}_1">
+                  <div>
+                    <img src="{{data['poster']}}" draggable="false" class="img-center img-responsive zoom img-raised" alt="Poster Not Found" (click)="showRating(data)"/>
+                  </div>
+                </div>
+                <div class="tab-pane" id="link_{{data['imdbId']}}_2">
+                  <div>
+                    <table class="table tablesorter" >
+                      <thead class=" text-primary">
+                      <tr>
+                        <th class="header">
+                          Movie Detail
+                        </th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>
+                          <i>Title:</i> <h4>{{data['title']}}({{data['year']}})</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <i>Director:</i> <h4>{{data['director']}}</h4>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+</div>
