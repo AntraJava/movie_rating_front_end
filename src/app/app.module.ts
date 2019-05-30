@@ -23,6 +23,7 @@ import {AuthService} from './user/service/auth.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './user/login/login.component';
 import {JwtInterceptor} from './service/interceptor/jwt-interceptor.service';
+import { MovieCommentBoardComponent } from './movie/movie-comment-board/movie-comment-board.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {JwtInterceptor} from './service/interceptor/jwt-interceptor.service';
     MovieComponent,
     DashboardComponent,
     MovieDetailComponent,
-    LoginComponent
+    LoginComponent,
+    MovieCommentBoardComponent
   ],
   imports: [
     BrowserModule,

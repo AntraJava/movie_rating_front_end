@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Rate} from '../movie/movie-detail/movie-detail.component';
+import {MovieRatingResponse, Rate} from '../movie/movie-detail/movie-detail.component';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,15 @@ export class MovieService {
     const options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
 
     return this.http.post('http://localhost:8080/movie/', rate, options);
+  }
+
+  getMovieAverageScore(id: string): Observable<MovieRatingResponse> {
+    const params = {movieId: id};
+    return this.http.get<MovieRatingResponse>('http://localhost:8080/movie/average', { params });
+  }
+
+  getMovieAverageScoreAndEnableRating(id: string): Observable<MovieRatingResponse> {
+    const params = {movieId: id};
+    return this.http.get<MovieRatingResponse>('http://localhost:8080/movie/rateStatus', {params});
   }
 }

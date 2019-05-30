@@ -1,0 +1,14 @@
+
+<div class="table board_bg">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-sm btn-round btn-success pull-right" (click)="loadData()" ><i class="tim-icons icon-chat-33"></i>Load All Rate</button>
+    </div>
+  </div>
+  <div class="row">
+    <p *ngFor="let comment of dataToShow">
+      {{comment.userName + ' - '+comment.timeStamp}}
+      {{comment.rate.comment}}
+    </p>
+  </div>
+</div>

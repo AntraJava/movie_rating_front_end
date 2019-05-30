@@ -1,16 +1,22 @@
 
 <div class="row">
   <div class="col-md-6">
-<label mat-dialog-title>{{data.movie['title'] + '('+ data.movie['year']+')'}}</label>
+    <label mat-dialog-title>{{data.movie['title'] + '('+ data.movie['year']+')'}}</label>
   </div>
   <div class="col-md-6">
-    <button  mat-dialog-close class="btn btn-sm btn-round btn-danger pull-right">Close</button>
+    <button  mat-dialog-close class="btn btn-sm btn-round btn-danger pull-right"><i class="tim-icons icon-simple-remove"></i></button>
   </div>
 </div>
 <mat-dialog-content>
 <div class="row movie_detail">
         <div class="col-sm-3"><img src="{{data.movie['poster']}}" class="img-responsive"/></div>
         <div class="col-sm-9">
+          <div class="row" *ngIf="averageScore !== null">
+            <div class="col-sm-6">
+              <span style="margin-top: 35px;">Average User Rating: {{averageScore}}</span>
+              <bar-rating name="movie_average" [rate]="averageScore" [readOnly]="true" [max]="5" required></bar-rating>
+            </div>
+          </div>
           <div class="row">
             <div class="col-sm-6">
               <h2>Director: </h2>
@@ -44,6 +50,11 @@
 
 <mat-dialog-actions>
   <div class="table">
+    <div *ngIf="!enableRate" class="text-danger">
+      You already rated this movie.
+    </div>
+  </div>
+  <div class="table" *ngIf="enableRate">
       <form #form="ngForm">
           <div class="row movie_detail">
             <div *ngFor="let charact of movieCharacts" class="col-md-3">
@@ -58,19 +69,22 @@
       </form>
 
       <div class="row movie_detail">
-<!--        <div class="col-md-6">-->
-<!--          <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>-->
-<!--        </div>-->
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
               <input type="text" class="form-control inverted review_field" [(ngModel)]="rate.comment" placeholder="Comments"/>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <button  [mat-dialog-close]="true" class="btn btn-rounded btn-info review_field" (click)="submit()" [disabled]="form.invalid">Submit</button>
+            </div>
+            <div class="col-md-2">
+              <button  mat-dialog-close class="btn btn-rounded btn-danger review_field">Cancel</button>
             </div>
           </div>
         </div>
       </div>
+  </div>
+  <div class="table">
+    <app-movie-comment-board [movieId]="data.movie['id']"></app-movie-comment-board>
   </div>
 </mat-dialog-actions>
