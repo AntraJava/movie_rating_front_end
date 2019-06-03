@@ -1,14 +1,28 @@
 
 <div class="table board_bg">
-  <div class="row">
-    <div class="col-md-12">
-      <button class="btn btn-sm btn-round btn-success pull-right" (click)="loadData()" ><i class="tim-icons icon-chat-33"></i>Load All Rate</button>
+  <div class="card" *ngFor="let comment of dataToShow" [@fadeInOut]>
+    <div class="card-header">
+      <div class="row">
+        <div class="col-sm-2"  *ngFor="let rate of comment.detailScore">
+          <div class="col-sm-12">{{rate.category}}</div>
+          <div class="col-sm-12">{{rate.score}}/5</div>
+        </div>
+      </div>
+      <small class="pull-right"> {{comment.username}} - {{comment.timeStamp | date: 'dd/MM/yyyy' }}</small>
+    </div>
+    <div class="card-body">
+      <p class="blockquote blockquote-default">
+        {{comment.comment}}
+        <br>
+        <!--        <small class="pull-right">-{{comment.username}}</small>-->
+      </p>
     </div>
   </div>
-  <div class="row">
-    <p *ngFor="let comment of dataToShow">
-      {{comment.userName + ' - '+comment.timeStamp}}
-      {{comment.rate.comment}}
-    </p>
+  <div class="row" *ngIf="showMoreBtn">
+    <div class="col-md-6">
+      <button class="btn btn-sm btn-round btn-success pull-right" (click)="loadData()" ><i class="tim-icons icon-chat-33"></i>Load More Rate</button>
+    </div>
   </div>
+
+
 </div>

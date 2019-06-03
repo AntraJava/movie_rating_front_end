@@ -1,11 +1,21 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {HeaderComponent} from './include/header/header.component';
+import {FooterComponent} from './include/footer/footer.component';
+import {AppRoutingModule} from './app-routing.module';
+import {MovieComponent} from './movie/movie.component';
+import {MovieDetailComponent} from './movie/movie-detail/movie-detail.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        AppRoutingModule,
+        MovieComponent,
+        MovieDetailComponent
       ],
     }).compileComponents();
   }));

@@ -1,7 +1,10 @@
+<div class="section section-pagination">
+  <img src="assets/img/path4.png" class="path">
+  <img src="assets/img/path5.png" class="path path1">
 
 <div class="row">
   <div class="col-md-6">
-    <label mat-dialog-title>{{data.movie['title'] + '('+ data.movie['year']+')'}}</label>
+    <h2 mat-dialog-title>{{data.movie['title'] + '('+ data.movie['year']+')'}}</h2>
   </div>
   <div class="col-md-6">
     <button  mat-dialog-close class="btn btn-sm btn-round btn-danger pull-right"><i class="tim-icons icon-simple-remove"></i></button>
@@ -72,7 +75,7 @@
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-8">
-              <input type="text" class="form-control inverted review_field" [(ngModel)]="rate.comment" placeholder="Comments"/>
+              <input type="text" class="form-control review_field" [(ngModel)]="rate.comment" placeholder="Comments"/>
             </div>
             <div class="col-md-2">
                 <button  [mat-dialog-close]="true" class="btn btn-rounded btn-info review_field" (click)="submit()" [disabled]="form.invalid">Submit</button>
@@ -88,3 +91,4 @@
     <app-movie-comment-board [movieId]="data.movie['id']"></app-movie-comment-board>
   </div>
 </mat-dialog-actions>
+</div>

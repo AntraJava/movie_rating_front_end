@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {MovieRatingResponse, Rate} from '../movie/movie-detail/movie-detail.component';
 import {Observable} from 'rxjs';
+import {RateComment} from '../movie/movie-comment-board/movie-comment-board.component';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,10 @@ export class MovieService {
   getMovieAverageScoreAndEnableRating(id: string): Observable<MovieRatingResponse> {
     const params = {movieId: id};
     return this.http.get<MovieRatingResponse>('http://localhost:8080/movie/rateStatus', {params});
+  }
+
+  getRatingComment(movie: string, p: string, size: string, beforeTimeISO: string): Observable<RateComment[]> {
+    const params = {movieId: movie, page: p, recordNo: size, fromTime: beforeTimeISO};
+    return this.http.get<RateComment[]>('http://localhost:8080/movie/ratingInfo', {params});
   }
 }

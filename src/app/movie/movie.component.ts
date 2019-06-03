@@ -51,7 +51,7 @@ export class MovieComponent implements OnInit {
         data: {
           movie: movie
         },
-        panelClass:"index-page",
+        panelClass:"movie_detail_page",
         disableClose: true,
         width: "90%",
         height:"90%"

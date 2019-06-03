@@ -1,3 +1,107 @@
-<p>
-  dashboard works!
-</p>
+<div class="landing-page">
+  <div class="page-header">
+    <img src="../assets/img/blob.png" class="path">
+    <img src="../assets/img/path2.png" class="path2">
+    <img src="../assets/img/triunghiuri.png" class="shapes triangle">
+    <img src="../assets/img/waves.png" class="shapes wave">
+    <img src="../assets/img/cercuri.png" class="shapes circle">
+    <div class="content-center">
+      <div class="container">
+        <div class="row row-grid justify-content-between">
+          <div class="col-md-5 mt-lg-5">
+            <div class="row">
+              <div class="col-lg-6 col-sm-12 px-2 py-2">
+                <div class="card card-stats" [ngClass]="cardFocus" (mouseenter)="cardFocus='upper bg-default'" (mouseleave)="cardFocus=''">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="tim-icons icon-trophy text-warning"></i>
+                        </div>
+                      </div>
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-title">3,237
+                          </p><p>
+                        </p><p class="card-category">Awards</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 px-2 py-2">
+                <div class="card card-stats">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="tim-icons icon-coins text-white"></i>
+                        </div>
+                      </div>
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-title">3,653
+                          </p><p>
+                        </p><p class="card-category">Commits</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-sm-12 px-2 py-2">
+                <div class="card card-stats ">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="tim-icons icon-gift-2 text-info"></i>
+                        </div>
+                      </div>
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-title">593
+                          </p><p>
+                        </p><p class="card-category">Presents</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 px-2 py-2">
+                <div class="card card-stats ">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="tim-icons icon-credit-card text-success"></i>
+                        </div>
+                      </div>
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-title">10,783
+                          </p><p>
+                        </p><p class="card-category">Forks</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="pl-md-5">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

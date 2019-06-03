@@ -1,33 +1,56 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Rate} from '../movie-detail/movie-detail.component';
+import {MovieService} from '../../service/movie.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-movie-comment-board',
   templateUrl: './movie-comment-board.component.html',
-  styleUrls: ['./movie-comment-board.component.css']
+  styleUrls: ['./movie-comment-board.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      // transition('void <=> *', animate(500)),
+      transition(':enter', animate(800)),
+    ]),
+  ]
 })
 export class MovieCommentBoardComponent implements OnInit {
-  constructor() { }
+  constructor(private movieService: MovieService) { }
+  private pageSize = 3;
+  private pageNo = 0;
   @Input() private movieId: string;
   dataToShow: RateComment[] = [];
+  showMoreBtn = true;
   ngOnInit() {
-    console.log(this.movieId);
+    // console.log(this.movieId);
   }
 
   loadData() {
-    // console.log(this.dataToShow)
-    const r1 = new RateComment();
-    r1.rate = {comment: 'buhaokan'};
-    r1.userName = 'Teresa';
-    r1.timeStamp = '2019/4/5';
-    this.dataToShow.push(r1);
-    console.log(this.dataToShow);
-    console.log(new Date().toISOString());
+    this.movieService.getRatingComment(this.movieId, this.pageNo.toString(), this.pageSize.toString(), new Date().toISOString())
+      .subscribe(data => {
+      console.log('data returned from server', data);
+      if ( data.length < this.pageSize )  {
+        this.showMoreBtn = false;
+      }
+      data.forEach(d => this.dataToShow.push(d));
+      console.log('data in dataToShowr', this.dataToShow);
+      this.pageNo++;
+    }, error => {
+      throw error;
+    });
   }
 }
 
 export class RateComment {
-  rate: any = {};
-  userName: string;
+  detailScore: RateScore[];
+  username: string;
   timeStamp: string;
+  comment: string;
+}
+export class RateScore {
+  category: string;
+  score: string;
 }
