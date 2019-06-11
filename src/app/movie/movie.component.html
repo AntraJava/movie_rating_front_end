@@ -14,7 +14,7 @@
             <div class="row margin-bottom-large">
               <div class="col-md-10" style="vertical-align: middle">
                 <input [autofocus]="true" id="search" type="text" [(ngModel)]="searchKey" class="form-control"
-                       placeholder="Title of the Movie" (keyup.enter)="search()" [disabled]="loading"/>
+                       placeholder="Title of the Movie" (keyup.enter)="search()" [disabled]="loading" autocomplete="off"/>
               </div>
               <div class="col-md-2">
                 <button class="btn btn-primary btn-md" (click)="search()" [disabled]="loading"><i

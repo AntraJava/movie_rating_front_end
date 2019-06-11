@@ -17,7 +17,7 @@
 <!--                      <i class="tim-icons icon-single-02"></i>-->
 <!--                    </div>-->
 <!--                  </div>-->
-                  <input type="text" #name="ngModel" name="su_name" [(ngModel)]="signup.name" class="form-control"  placeholder="Your Name" required >
+                  <input type="text" #name="ngModel" name="su_name" [(ngModel)]="signup.name" class="form-control"  placeholder="Your Name" required autocomplete="off">
                 </div>
                 <div class="input-group" [ngClass]="{'has-danger': username.invalid && (username.dirty || username.touched), 'has-success':username.valid}">
 <!--                  <div class="input-group-prepend">-->
@@ -25,7 +25,7 @@
 <!--                      <i class="tim-icons icon-badge"></i>-->
 <!--                    </div>-->
 <!--                  </div>-->
-                  <input type="text" #username="ngModel" name="su_username" [(ngModel)]="signup.username" class="form-control" placeholder="Username" required >
+                  <input type="text" #username="ngModel" name="su_username" [(ngModel)]="signup.username" class="form-control" placeholder="Username" required autocomplete="off">
                 </div>
                 <div class="input-group" [ngClass]="{'has-danger': email.invalid && (email.dirty || email.touched), 'has-success':email.valid}">
 <!--                  <div class="input-group-prepend">-->
@@ -33,7 +33,7 @@
 <!--                      <i class="tim-icons icon-email-85"></i>-->
 <!--                    </div>-->
 <!--                  </div>-->
-                  <input type="email" email="true" #email="ngModel" name="su_email" [(ngModel)]="signup.email" placeholder="Email" class="form-control" required >
+                  <input type="email" email="true" #email="ngModel" name="su_email" [(ngModel)]="signup.email" placeholder="Email" class="form-control" required autocomplete="off">
                 </div>
                 <div class="input-group" [ngClass]="{'has-danger': password.invalid && (password.dirty || password.touched), 'has-success':password.valid}">
 <!--                  <div class="input-group-prepend">-->
@@ -41,7 +41,7 @@
 <!--                      <i class="tim-icons icon-lock-circle"></i>-->
 <!--                    </div>-->
 <!--                  </div>-->
-                  <input type="password" minlength=6 maxlength=20 #password="ngModel" name="su_password" [(ngModel)]="signup.password" class="form-control" placeholder="Password" required >
+                  <input type="password" minlength=6 maxlength=20 #password="ngModel" name="su_password" [(ngModel)]="signup.password" class="form-control" placeholder="Password" required autocomplete="off">
                 </div>
               </form>
               <p class="text-danger" *ngFor="let m of msg">{{m}}</p>
@@ -66,7 +66,7 @@
 <!--                      <i class="tim-icons icon-single-02"></i>-->
 <!--                    </div>-->
 <!--                  </div>-->
-                  <input [autofocus]="true" type="text" name="usernameOrEmail" [(ngModel)]="usernameOrEmail" class="form-control" placeholder="Username or Email" required>
+                  <input [autofocus]="true" type="text" name="usernameOrEmail" [(ngModel)]="usernameOrEmail" class="form-control" placeholder="Username or Email" required autocomplete="off">
                 </div>
                 <div class="input-group">
 <!--                  <div class="input-group-prepend">-->
@@ -74,7 +74,7 @@
 <!--                      <i class="tim-icons icon-lock-circle"></i>-->
 <!--                    </div>-->
 <!--                  </div>-->
-                  <input type="text" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" required>
+                  <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" required autocomplete="off">
                 </div>
               </form>
               <p class="text-danger" *ngFor="let m of msg">{{m}}</p>

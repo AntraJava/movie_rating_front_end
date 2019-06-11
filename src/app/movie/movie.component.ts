@@ -52,7 +52,7 @@ export class MovieComponent implements OnInit {
           movie: movie
         },
         panelClass:"movie_detail_page",
-        disableClose: true,
+        // disableClose: true,
         width: "90%",
         height:"90%"
       });
