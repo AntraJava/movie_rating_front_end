@@ -49,6 +49,8 @@ export class RateComment {
   username: string;
   timeStamp: string;
   comment: string;
+  movieTitle: string;
+  movieId: string;
 }
 export class RateScore {
   category: string;

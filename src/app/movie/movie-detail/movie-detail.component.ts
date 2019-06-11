@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 import {MovieService} from '../../service/movie.service';
+import {NotificationService} from '../../service/notification.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -12,7 +13,7 @@ export class MovieDetailComponent implements OnInit {
   movieCharacts: MovieCharact[];
   averageScore: number;
   enableRate: boolean;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private movieService: MovieService) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private movieService: MovieService, private notiService: NotificationService) {}
 
   ngOnInit(): void {
     console.log('test', this.data);
@@ -43,6 +44,7 @@ export class MovieDetailComponent implements OnInit {
     console.log(this.data);
     this.movieService.submit(this.rate).subscribe(data => {
       console.log('data submitted, got return from server', data);
+      this.notiService.showSuccess('Successfully Submit the rate!');
     }, error => {
       throw error;
     });

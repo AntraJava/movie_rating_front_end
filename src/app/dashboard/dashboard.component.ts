@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {MovieService} from '../service/movie.service';
+import {AuthService} from '../user/service/auth.service';
+import {MovieCharact} from '../movie/movie-detail/movie-detail.component';
+import {RateComment} from '../movie/movie-comment-board/movie-comment-board.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,10 +11,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   cardFocus: string;
-
-  constructor() { }
+  totalRating: number;
+  allRate: RateComment[] = [];
+  currentPage = 0;
+  movieCharacts: MovieCharact[] = [];
+  constructor(private movieService: MovieService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.totalRating = 0;
+    this.movieService.getRatingTotalByUserId(this.authService.getCurrentUser().id).subscribe(value => {
+      this.totalRating = value.hasOwnProperty('totalNo') ? value['totalNo'] : 0;
+    });
+
+    this.movieService.getAllRate(this.currentPage, this.authService.getCurrentUser().id).subscribe(value => {
+      this.currentPage++;
+      value.forEach(r => {
+        this.allRate.push(r);
+        r.detailScore.sort((a, b) => a.category.localeCompare(b.category) );
+      });
+    });
+
+    this.movieService.getMovieCharact().subscribe( data => {
+      this.movieCharacts = data.sort((a, b) => a.name.localeCompare(b.name));
+    });
   }
 
+  delete(rate: RateComment) {
+    console.log('deleting ', rate);
+    this.movieService.deleteRate(rate).subscribe( data => {
+    });
+  }
 }
