@@ -14,9 +14,9 @@ export class AuthGuardService implements CanActivate {
     const token = this.auth.jwtHelper.tokenGetter();
     const tokenPayload = token ? decode(token) : {};
     console.log(tokenPayload);
-    if (!tokenPayload.role.includes(expectedRole)) {
-      this.notification.showError('Please log in with a proper role.');
-    }
+    // if (!tokenPayload.role.includes(expectedRole)) {
+    //   this.notification.showError('Please log in with a proper role.');
+    // }
     if (!this.auth.isAuthenticated() || !tokenPayload.role.includes(expectedRole)) {
       this.router.navigate(['login']);
       return false;
