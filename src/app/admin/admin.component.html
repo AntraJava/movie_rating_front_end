@@ -1,0 +1,87 @@
+<div class="landing-page">
+  <div class="page-header">
+    <img src="../assets/img/blob.png" class="path">
+    <img src="../assets/img/path2.png" class="path2">
+    <img src="../assets/img/waves.png" class="shapes wave">
+    <img src="../assets/img/cercuri.png" class="shapes circle">
+      <div class="container_top">
+        <div class="title">
+          <h3 class="mb-3">Administration</h3>
+        </div>
+        <div class="row">
+          <div class="col-md-12 ml-auto col-xl-12 mr-auto">
+            <div class="mb-3">
+              <small>Choose One Tab</small>
+            </div>
+            <!-- Nav tabs -->
+            <div class="card">
+              <div class="card-header">
+                <ul class="nav nav-tabs nav-tabs-primary" role="tablist" >
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#user_mgmt" role="tablist" draggable="false" (click)="switchTab('user')">
+                      <i class="tim-icons icon-badge"></i> User Management
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#movie_mgmt" role="tablist" draggable="false" (click)="switchTab('movie')">
+                      <i class="tim-icons icon-video-66"></i> Movie Management
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#rating_mgmt" role="tablist" draggable="false" (click)="switchTab('rating')">
+                      <i class="tim-icons icon-shape-star"></i> Rating Management
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <!-- Tab panes -->
+                <div *ngIf="loading" class="container_spinner">
+                  <mat-spinner></mat-spinner>
+                </div>
+                <div class="tab-content tab-space">
+                  <div class="tab-pane" id="user_mgmt">
+                    <table class="table" *ngIf="usersInfo">
+                      <thead>
+                      <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Name </th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let user of usersInfo.users">
+                        <th scope="row">{{user.username}}</th>
+                        <td>{{user.name}}</td>
+                        <td> {{user.email}}</td>
+                        <td> {{user.role}}</td>
+                        <td><div class="btn-group-sm">
+                          <button type="button" class="btn-sm dropdown-toggle-split btn-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Actions
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" (click)="edit(user)"><i class="tim-icons icon-pencil"></i>Edit</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" (click)="delete(user)"><i class="tim-icons icon-trash-simple"></i>Delete</a>
+                          </div>
+                        </div></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="tab-pane" id="movie_mgmt">
+                    Not implemented
+                  </div>
+                  <div class="tab-pane" id="rating_mgmt">
+                    Not implemented
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+  </div>
+</div>
