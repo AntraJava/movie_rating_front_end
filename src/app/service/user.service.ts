@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../user/User';
 import {environment} from '../../environments/environment';
+import {UserResponse} from '../admin/admin.component';
 
 export class UserAdminResponse {
   page: number;
@@ -29,5 +30,14 @@ export class UserService {
     const options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
 
     return this.http.post(this.baseUrl + '/users', data, options);
+  }
+
+  promoteAdmin(id: number) {
+    const options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
+    return this.http.put<UserResponse>(this.baseUrl + `/users/admin/${id}`, null, options);
+  }
+
+  demoteAdmin(id: number) {
+    return this.http.delete<UserResponse>(this.baseUrl + `/users/admin/${id}`);
   }
 }

@@ -19,8 +19,7 @@ export class AdminComponent implements OnInit {
   constructor(private userService: UserService,
               private movieService: MovieService,
               private notiService: NotificationService,
-              private dialog: MatDialog,
-              private authService: AuthService) { }
+              private dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -64,4 +63,31 @@ export class AdminComponent implements OnInit {
       height: '90%'
     });
   }
+
+  upToAdmin(user: User) {
+    this.userService.promoteAdmin(user.id).subscribe(value => {
+      this.notiService.showSuccess(value.message);
+      this.usersInfo.users.forEach(u => {
+        if (u.id === user.id) {
+          u.role = 'ROLE_USER,ROLE_ADMIN';
+        }
+      });
+    });
+  }
+
+  downFromAdmin(user: User) {
+    this.userService.demoteAdmin(user.id).subscribe(value => {
+      this.notiService.showSuccess(value.message);
+      this.usersInfo.users.forEach(u => {
+        if (u.id === user.id) {
+          u.role = 'ROLE_USER';
+        }
+      });
+    });
+  }
+}
+
+export class UserResponse {
+  success: boolean;
+  message: string;
 }

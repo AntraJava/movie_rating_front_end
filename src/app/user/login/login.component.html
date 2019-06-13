@@ -43,6 +43,15 @@
 <!--                  </div>-->
                   <input type="password" minlength=6 maxlength=20 #password="ngModel" name="su_password" [(ngModel)]="signup.password" class="form-control" placeholder="Password" required autocomplete="off">
                 </div>
+                <div class="input-group">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" #adminCheckBox="ngModel" name="su_adminchk" [(ngModel)]="signup.admin">
+                      <span class="form-check-sign"></span>
+                        This is an <Strong>Admin</Strong> account. (This shouldn't be here. But for demo/practice purpose, check this to get access to the admin module.)
+                    </label>
+                  </div>
+                </div>
               </form>
               <p class="text-danger" *ngFor="let m of msg">{{m}}</p>
 
