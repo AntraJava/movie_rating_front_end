@@ -6,22 +6,35 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 
 import { AuthGuardService as AuthGuard} from './user/service/auth-guard.service';
 import {LoginComponent} from './user/login/login.component';
+import {AdminComponent} from './admin/admin.component';
 
 const routes: Routes = [
-  {
+   {
     path: 'movies',
     component: MovieComponent,
     canActivate: [AuthGuard],
     data: {
-      expectedRole: 'ROLE_USER'}
-    },
+      expectedRole: 'ROLE_USER'
+    }
+   },
   { path: '',
     redirectTo: 'movies',
     pathMatch: 'full'
   },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent ,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'ROLE_USER'
+          }},
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'admin', component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'ROLE_ADMIN'
+    }
   }
 ];
 

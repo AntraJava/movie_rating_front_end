@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../user/service/auth.service';
 import {User} from '../../user/User';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {MovieDetailComponent} from '../../movie/movie-detail/movie-detail.component';
+import {ProfileComponent} from '../../profile/profile.component';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +14,7 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
   private currentUser: User;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.currentUser = this.authService.getCurrentUser();
@@ -37,5 +40,16 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
     this.currentUser = null;
     this.router.navigate(['login']);
+  }
+
+  openProfile() {
+    this.dialog.open(ProfileComponent, {
+      data: {
+        userId: this.authService.getCurrentUser().id
+      },
+      panelClass: 'movie_detail_page',
+      width: '90%',
+      height: '90%'
+    });
   }
 }

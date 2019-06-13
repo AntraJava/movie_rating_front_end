@@ -5,10 +5,12 @@ import {HttpClient} from '@angular/common/http';
 import decode from 'jwt-decode';
 import {User} from '../User';
 import {SignUpRequest} from '../login/login.component';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class AuthService {
   private currentUser: User;
+  baseUrl = environment.baseUrl;
   constructor(public jwtHelper: JwtHelperService, private http: HttpClient) {}
   // ...
   public isAuthenticated(): boolean {
@@ -20,7 +22,7 @@ export class AuthService {
 
   login(username: string, password: string) {
     const body = new LoginRequest(username, password);
-    return this.http.post<any>('http://localhost:8080/api/auth/signin', body)
+    return this.http.post<any>(this.baseUrl + '/api/auth/signin', body)
       .pipe(map(data => {
         // login successful if there's a jwt token in the response
         if (data && data.accessToken) {

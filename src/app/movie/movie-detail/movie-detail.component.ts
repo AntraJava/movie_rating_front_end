@@ -16,7 +16,7 @@ export class MovieDetailComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private movieService: MovieService, private notiService: NotificationService) {}
 
   ngOnInit(): void {
-    console.log('test', this.data);
+    // console.log('test', this.data);
     this.movieService.getMovieAverageScoreAndEnableRating(this.data.movie.id).subscribe(
       rateResponse => {
         console.log('Rate Status Returned', rateResponse);

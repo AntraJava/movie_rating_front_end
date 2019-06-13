@@ -18,10 +18,10 @@
             <a routerLink='/dashboard' class="dropdown-item">
               <i class="tim-icons icon-bullet-list-67"></i>All My Ratings
             </a>
-            <a href="" class="dropdown-item">
+            <a href="javascript:void(0)" class="dropdown-item" (click)="openProfile()">
               <i class="tim-icons icon-single-02"></i>Profile Page
             </a>
-            <a href="" class="dropdown-item" *ngIf="currentUser.role.includes('ROLE_ADMIN')">
+            <a routerLink="/admin" class="dropdown-item" *ngIf="currentUser.role.includes('ROLE_ADMIN')">
               <i class="tim-icons icon-settings-gear-63"></i>Administrator Page
             </a>
             <a href="javascript:void(0)" (click)="logout()" class="dropdown-item">

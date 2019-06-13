@@ -3,6 +3,7 @@ import {MovieService} from '../service/movie.service';
 import {AuthService} from '../user/service/auth.service';
 import {MovieCharact} from '../movie/movie-detail/movie-detail.component';
 import {RateComment} from '../movie/movie-comment-board/movie-comment-board.component';
+import {NotificationService} from '../service/notification.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,7 @@ export class DashboardComponent implements OnInit {
   allRate: RateComment[] = [];
   currentPage = 0;
   movieCharacts: MovieCharact[] = [];
-  constructor(private movieService: MovieService, private authService: AuthService) { }
+  constructor(private movieService: MovieService, private authService: AuthService, private notiService: NotificationService) { }
 
   ngOnInit() {
     this.totalRating = 0;
@@ -37,8 +38,8 @@ export class DashboardComponent implements OnInit {
   }
 
   delete(rate: RateComment) {
-    console.log('deleting ', rate);
-    this.movieService.deleteRate(rate).subscribe( data => {
-    });
+    if (confirm('Are you sure to delete this rating ?')) {
+      this.notiService.showSuccess('Deleted!(actually not)');
+    }
   }
 }

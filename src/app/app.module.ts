@@ -24,6 +24,10 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './user/login/login.component';
 import {JwtInterceptor} from './service/interceptor/jwt-interceptor.service';
 import { MovieCommentBoardComponent } from './movie/movie-comment-board/movie-comment-board.component';
+import { AdminComponent } from './admin/admin.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {UserService} from './service/user.service';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -35,7 +39,9 @@ import { MovieCommentBoardComponent } from './movie/movie-comment-board/movie-co
     DashboardComponent,
     MovieDetailComponent,
     LoginComponent,
-    MovieCommentBoardComponent
+    MovieCommentBoardComponent,
+    AdminComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +52,7 @@ import { MovieCommentBoardComponent } from './movie/movie-comment-board/movie-co
     BrowserAnimationsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatTabsModule,
     BarRatingModule,
     JwtModule.forRoot({
       config: {
@@ -60,6 +67,7 @@ import { MovieCommentBoardComponent } from './movie/movie-comment-board/movie-co
     AuthGuardService,
     MovieService,
     GlobalErrorHandler,
+    UserService,
     { provide: ErrorHandler,
       useClass: GlobalErrorHandler},
     { provide: HTTP_INTERCEPTORS,
@@ -70,7 +78,8 @@ import { MovieCommentBoardComponent } from './movie/movie-comment-board/movie-co
       useClass: ServerErrorInterceptor,
       multi: true }],
   entryComponents: [
-    MovieDetailComponent
+    MovieDetailComponent,
+    ProfileComponent
   ],
   bootstrap: [AppComponent],
 })
