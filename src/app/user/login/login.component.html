@@ -83,7 +83,7 @@
 <!--                      <i class="tim-icons icon-lock-circle"></i>-->
 <!--                    </div>-->
 <!--                  </div>-->
-                  <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" required autocomplete="off">
+                  <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" required autocomplete="off" (keydown.enter)="login()">
                 </div>
               </form>
               <p class="text-danger" *ngFor="let m of msg">{{m}}</p>
