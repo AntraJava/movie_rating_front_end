@@ -7,6 +7,8 @@ import {NotificationService} from '../service/notification.service';
 import {ProfileComponent} from '../profile/profile.component';
 import {MatDialog} from '@angular/material';
 import {AuthService} from '../user/service/auth.service';
+import {Movie} from '../movie/movie';
+import {MovieDetailComponent} from '../movie/movie-detail/movie-detail.component';
 
 @Component({
   selector: 'app-admin',
@@ -16,6 +18,7 @@ import {AuthService} from '../user/service/auth.service';
 export class AdminComponent implements OnInit {
   loading: boolean;
   usersInfo: UserAdminResponse;
+  movies: Movie[];
   constructor(private userService: UserService,
               private movieService: MovieService,
               private notiService: NotificationService,
@@ -26,6 +29,7 @@ export class AdminComponent implements OnInit {
 
   switchTab(tab: string) {
     this.usersInfo = null;
+    this.movies = null;
     this.loading = true;
     // setTimeout(() => {}, 2000);
     // this.loading = false;
@@ -40,6 +44,11 @@ export class AdminComponent implements OnInit {
         });
         break;
       case 'movie':
+        this.movieService.getMoviesAll().pipe(delay(1200)).subscribe(value => {
+          this.movies = value.movies;
+          this.loading = false;
+          console.log(value);
+        }, error => { this.loading = false; console.log(error); });
         break;
       case 'rating':
         break;
@@ -83,6 +92,23 @@ export class AdminComponent implements OnInit {
           u.role = 'ROLE_USER';
         }
       });
+    });
+  }
+
+  deleteMovie(movie: Movie) {
+    alert('Implement this.');
+  }
+
+  detail(movieInput) {
+    this.dialog.open(MovieDetailComponent, {
+      data: {
+        movie: movieInput,
+        enableRate: false
+      },
+      panelClass: 'movie_detail_page',
+      // disableClose: true,
+      width: '90%',
+      height: '90%'
     });
   }
 }

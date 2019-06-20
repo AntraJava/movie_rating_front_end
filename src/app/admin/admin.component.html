@@ -40,14 +40,14 @@
                   <mat-spinner></mat-spinner>
                 </div>
                 <div class="tab-content tab-space">
-                  <div class="tab-pane" id="user_mgmt">
-                    <table class="table" *ngIf="usersInfo">
+                  <div class="tab-pane scroll" id="user_mgmt">
+                    <table class="table " *ngIf="usersInfo">
                       <thead>
                       <tr>
                         <th scope="col">Username</th>
                         <th scope="col">Name </th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
+                        <th scope="col">IMDB</th>
+                        <th scope="col">Release</th>
                         <th scope="col">Action</th>
                       </tr>
                       </thead>
@@ -57,8 +57,8 @@
                         <td>{{user.name}}</td>
                         <td> {{user.email}}</td>
                         <td> {{user.role}}</td>
-                        <td><div class="btn-group-sm">
-                          <button type="button" class="btn-sm dropdown-toggle-split btn-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <td><div class="dropdown">
+                          <button type="button" class="btn-sm dropdown-toggle btn-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Actions
                           </button>
                           <div class="dropdown-menu">
@@ -73,8 +73,36 @@
                       </tbody>
                     </table>
                   </div>
-                  <div class="tab-pane" id="movie_mgmt">
-                    Not implemented
+                  <div class="tab-pane scroll" id="movie_mgmt">
+                    <table class="table" *ngIf="movies">
+                      <thead>
+                      <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Director </th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let movie of movies">
+                        <th scope="row">{{movie.title}}</th>
+                        <td>{{movie.director}}</td>
+                        <td> {{movie.imdbId}}</td>
+                        <td> {{movie.release}}</td>
+                        <td><div class="dropdown">
+                          <button type="button" class="btn-sm dropdown-toggle btn-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Actions
+                          </button>
+                          <div class="dropdown-menu">
+                            <a href="javascript:void(0)" class="dropdown-item" (click)="detail(movie)"><i class="tim-icons icon-pencil"></i>Detail</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="javascript:void(0)" class="dropdown-item" (click)="deleteMovie(movie)"><i class="tim-icons icon-trash-simple"></i>Delete</a>
+                          </div>
+                        </div></td>
+                      </tr>
+                      </tbody>
+                    </table>
                   </div>
                   <div class="tab-pane" id="rating_mgmt">
                     Not implemented
