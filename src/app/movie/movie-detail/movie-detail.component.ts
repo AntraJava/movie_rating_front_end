@@ -21,7 +21,7 @@ export class MovieDetailComponent implements OnInit {
       rateResponse => {
         console.log('Rate Status Returned', rateResponse);
         this.averageScore = rateResponse.rating;
-        if (!this.data.enableRate ) {
+        if (!rateResponse.enableRate ) {
           this.enableRate = false;
           return;
         }
