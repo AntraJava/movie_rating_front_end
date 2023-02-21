@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import { MovieService} from '../service/movie.service';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MovieDetailComponent} from './movie-detail/movie-detail.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
@@ -16,7 +16,7 @@ export class MovieComponent implements OnInit {
   constructor(private movieService: MovieService,
               public dialog: MatDialog) { }
 
-  private movies: any[]
+  movies: any[]
   searchKey: string;
   loading: boolean;
 

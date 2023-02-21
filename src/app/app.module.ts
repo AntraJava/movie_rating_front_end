@@ -13,7 +13,7 @@ import {FormsModule} from '@angular/forms';
 import {ServerErrorInterceptor} from './service/interceptor/server-error-interceptor.service';
 import {GlobalErrorHandler} from './service/error/global-error-handler.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MovieDetailComponent} from './movie/movie-detail/movie-detail.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';

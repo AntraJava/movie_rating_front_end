@@ -56,7 +56,7 @@ export class AuthService {
       const token = this.jwtHelper.tokenGetter();
       const tokenPayload = decode(token);
       this.currentUser = new User(tokenPayload.sub, tokenPayload.username, tokenPayload.name,
-        tokenPayload.email, tokenPayload.role, token);
+        tokenPayload.email, tokenPayload.role, token.toString());
       return this.currentUser;
     }
   }

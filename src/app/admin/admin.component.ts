@@ -5,7 +5,7 @@ import {User} from '../user/User';
 import {delay} from 'rxjs/operators';
 import {NotificationService} from '../service/notification.service';
 import {ProfileComponent} from '../profile/profile.component';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 import {AuthService} from '../user/service/auth.service';
 import {Movie} from '../movie/movie';
 import {MovieDetailComponent} from '../movie/movie-detail/movie-detail.component';

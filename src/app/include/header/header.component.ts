@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../user/service/auth.service';
 import {User} from '../../user/User';
 import {Router} from '@angular/router';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 import {MovieDetailComponent} from '../../movie/movie-detail/movie-detail.component';
 import {ProfileComponent} from '../../profile/profile.component';
 
